@@ -1,0 +1,124 @@
+# ============================================================
+# QuantTradingSystem V3
+# System Global Configuration
+# ============================================================
+
+system:
+  name: "QuantTradingSystem"
+  version: "V3.0.0"
+  environment: "development"
+
+  # 时区
+  timezone: "America/New_York"
+
+  # 基础货币
+  base_currency: "USD"
+
+  # 系统运行模式
+  mode: "paper"
+
+  # 是否启用实盘交易
+  live_trading: false
+
+  # 是否启用回测
+  backtest: false
+
+
+# ============================================================
+# Project Paths
+# ============================================================
+
+paths:
+  config: "01_config"
+  data: "data"
+  logs: "logs"
+  reports: "reports"
+  models: "models"
+  cache: "cache"
+
+
+# ============================================================
+# Market
+# ============================================================
+
+market:
+  market: "US"
+  exchange: "SMART"
+
+  # 股票市场
+  asset_classes:
+    - "STOCK"
+    - "OPTION"
+
+
+# ============================================================
+# Trading
+# ============================================================
+
+trading:
+  currency: "USD"
+
+  # 中低频交易
+  frequency: "1s"
+
+  # 最大同时持有的股票数量
+  max_positions: 10
+
+  # 是否允许做空
+  allow_short: false
+
+  # 是否允许期权交易
+  allow_options: true
+
+
+# ============================================================
+# Data
+# ============================================================
+
+data:
+  provider: "IBKR"
+
+  # 默认K线周期
+  bar_size: "1 sec"
+
+  # 默认历史数据类型
+  historical_data_type: "TRADES"
+
+  # 是否使用实时数据
+  realtime: true
+
+
+# ============================================================
+# System Behavior
+# ============================================================
+
+runtime:
+  # 启动时是否检查配置
+  validate_config: true
+
+  # 启动时是否检查网络连接
+  check_connection: true
+
+  # 异常后是否自动恢复
+  auto_reconnect: true
+
+  # 最大重连次数
+  max_reconnect_attempts: 5
+
+  # 重连间隔，单位秒
+  reconnect_interval: 5
+
+
+# ============================================================
+# Safety
+# ============================================================
+
+safety:
+  # 启动交易前进行安全检查
+  pre_trade_check: true
+
+  # 禁止配置错误时启动交易
+  block_on_config_error: true
+
+  # 实盘交易二次确认
+  require_live_confirmation: true

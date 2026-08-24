@@ -1,0 +1,388 @@
+# ============================================================
+# QuantTradingSystem V3
+# Strategy Configuration
+# ============================================================
+
+strategy:
+
+  # ==========================================================
+  # Global Strategy Settings
+  # ==========================================================
+  global:
+
+    # 策略是否启用
+    enabled: true
+
+    # 策略名称
+    name: "MultiFactorAlphaStrategy"
+
+    # 策略版本
+    version: "1.0.0"
+
+    # 交易方向
+    direction: "LONG_ONLY"
+
+    # 持仓周期
+    holding_period:
+      min_days: 1
+      max_days: 60
+
+
+  # ==========================================================
+  # Market Regime
+  # 市场状态判断
+  # ==========================================================
+  market_regime:
+
+    enabled: true
+
+    # 市场基准
+    benchmark:
+      - "SPY"
+      - "QQQ"
+
+    # 判断周期
+    timeframe: "1D"
+
+    # 趋势参数
+    trend:
+
+      sma_short: 20
+      sma_medium: 60
+      sma_long: 200
+
+    # 波动率参数
+    volatility:
+
+      lookback: 20
+
+    # 市场状态
+    regimes:
+
+      bull:
+        enabled: true
+
+      neutral:
+        enabled: true
+
+      bear:
+        enabled: true
+
+
+  # ==========================================================
+  # Sector Selection
+  # 行业选择
+  # ==========================================================
+  sector_selector:
+
+    enabled: true
+
+    # 行业数量
+    top_n: 3
+
+    # 行业排名周期
+    ranking_period: 20
+
+    # 行业动量
+    momentum:
+
+      enabled: true
+      lookback: 60
+
+    # 相关性分析
+    correlation:
+
+      enabled: true
+
+      lookback: 60
+
+      # 最大允许相关系数
+      max_correlation: 0.80
+
+    # 层次聚类
+    hierarchical_clustering:
+
+      enabled: true
+
+      method: "ward"
+
+      clusters: 5
+
+    # PCA
+    pca:
+
+      enabled: true
+
+      components: 3
+
+
+  # ==========================================================
+  # Stock Selection
+  # 个股选择
+  # ==========================================================
+  stock_selector:
+
+    enabled: true
+
+    # 每个行业选择数量
+    stocks_per_sector: 5
+
+    # 最终股票池
+    max_stocks: 20
+
+    # 最低流动性
+    liquidity:
+
+      enabled: true
+
+      min_avg_daily_volume: 1000000
+
+      lookback: 20
+
+    # 最低价格
+    price:
+
+      enabled: true
+
+      min_price: 5.0
+
+
+  # ==========================================================
+  # Alpha Model
+  # 多因子 Alpha 模型
+  # ==========================================================
+  alpha_model:
+
+    enabled: true
+
+    name: "MultiFactorAlpha"
+
+    # 因子数量控制
+    factor_count:
+
+      min: 20
+      max: 30
+
+    # 因子标准化
+    normalization:
+
+      method: "zscore"
+
+      winsorize: true
+
+      winsorize_limit: 3.0
+
+
+    # --------------------------------------------------------
+    # Factor Categories
+    # --------------------------------------------------------
+
+    factors:
+
+      momentum:
+
+        enabled: true
+
+        weight: null
+
+        lookback:
+          short: 20
+          medium: 60
+          long: 120
+
+
+      value:
+
+        enabled: true
+
+        weight: null
+
+
+      quality:
+
+        enabled: true
+
+        weight: null
+
+
+      volatility:
+
+        enabled: true
+
+        weight: null
+
+
+      liquidity:
+
+        enabled: true
+
+        weight: null
+
+
+      sentiment:
+
+        enabled: true
+
+        weight: null
+
+
+      technical:
+
+        enabled: true
+
+        weight: null
+
+
+    # --------------------------------------------------------
+    # Dynamic Factor Weight
+    # --------------------------------------------------------
+    dynamic_weight:
+
+      enabled: true
+
+      method: "IC"
+
+      lookback: 60
+
+      min_weight: 0.05
+
+      max_weight: 0.30
+
+
+  # ==========================================================
+  # Alpha Ranking
+  # ==========================================================
+  alpha_ranking:
+
+    enabled: true
+
+    method: "cross_sectional"
+
+    top_percentile: 0.20
+
+    minimum_alpha_score: 0.0
+
+
+  # ==========================================================
+  # Signal Generation
+  # ==========================================================
+  signal:
+
+    enabled: true
+
+    # 信号周期
+    timeframe: "1s"
+
+    # 最低信号强度
+    min_strength: 0.60
+
+    # 信号确认
+    confirmation:
+
+      enabled: true
+
+      bars: 3
+
+    # 信号冷却时间
+    cooldown:
+
+      enabled: true
+
+      seconds: 60
+
+
+  # ==========================================================
+  # Position Entry
+  # 开仓
+  # ==========================================================
+  entry:
+
+    enabled: true
+
+    # 最低 Alpha 排名
+    min_alpha_rank: 0.20
+
+    # 最低信号强度
+    min_signal_strength: 0.60
+
+    # 市场状态过滤
+    market_regime_filter: true
+
+    # 行业过滤
+    sector_filter: true
+
+
+  # ==========================================================
+  # Position Exit
+  # 平仓
+  # ==========================================================
+  exit:
+
+    enabled: true
+
+    # Alpha 失效
+    alpha_decay:
+
+      enabled: true
+
+      threshold: -0.20
+
+    # 信号反转
+    signal_reversal: true
+
+    # 最大持仓时间
+    max_holding_days: 60
+
+
+  # ==========================================================
+  # Portfolio Construction
+  # 组合构建
+  # ==========================================================
+  portfolio:
+
+    enabled: true
+
+    # 权重方法
+    weighting_method: "risk_based"
+
+    # 单股票最大权重
+    max_stock_weight: 0.10
+
+    # 单行业最大权重
+    max_sector_weight: 0.30
+
+    # 最低股票权重
+    min_stock_weight: 0.02
+
+    # 是否允许现金
+    allow_cash: true
+
+
+  # ==========================================================
+  # Rebalance
+  # 再平衡
+  # ==========================================================
+  rebalance:
+
+    enabled: true
+
+    frequency: "weekly"
+
+    day: "MONDAY"
+
+    time: "10:00"
+
+
+  # ==========================================================
+  # Strategy Execution Control
+  # ==========================================================
+  execution:
+
+    # 是否允许生成订单
+    generate_orders: true
+
+    # 模拟交易
+    paper_trading: true
+
+    # 实盘交易
+    live_trading: false

@@ -1,0 +1,668 @@
+# ============================================================
+# QuantTradingSystem V3
+# Broker Configuration
+# IBKR / IB Gateway
+# ============================================================
+
+broker:
+
+  # ==========================================================
+  # 01. Broker
+  # 券商基本信息
+  # ==========================================================
+  name: "IBKR"
+
+  provider: "Interactive Brokers"
+
+  enabled: true
+
+  # API 类型
+  api_type: "IB_GATEWAY"
+
+  # ==========================================================
+  # 02. Trading Environment
+  # 交易环境
+  # ==========================================================
+  environment:
+
+    # paper = 模拟盘
+    # live  = 实盘
+    mode: "paper"
+
+    # 禁止在配置层直接开启实盘
+    live_trading: false
+
+    # 实盘交易二次确认
+    require_live_confirmation: true
+
+
+  # ==========================================================
+  # 03. Connection
+  # IB Gateway API 连接
+  # ==========================================================
+  connection:
+
+    # IB Gateway 地址
+    host: "127.0.0.1"
+
+    # --------------------------------------------------------
+    # IB Gateway 默认端口
+    #
+    # Paper Trading:
+    #   4002
+    #
+    # Live Trading:
+    #   4001
+    #
+    # 如果你的 Docker / Gateway 使用其他映射端口，
+    # 修改这里即可。
+    # --------------------------------------------------------
+    port: 4002
+
+    # API Client ID
+    client_id: 1
+
+    # 连接超时
+    timeout: 10
+
+    # 连接重试
+    reconnect:
+
+      enabled: true
+
+      max_attempts: 10
+
+      interval_seconds: 5
+
+      max_interval_seconds: 60
+
+      backoff_multiplier: 2.0
+
+
+  # ==========================================================
+  # 04. Account
+  # 账户信息
+  # ==========================================================
+  account:
+
+    # 不建议直接把真实账号写入 Git
+    #
+    # 建议通过环境变量读取：
+    # IBKR_ACCOUNT
+    #
+    account_id: ""
+
+    # 基础货币
+    base_currency: "USD"
+
+    # 是否启动时验证账户
+    validate_account: true
+
+    # 是否读取账户资金
+    load_account_summary: true
+
+    # 是否读取持仓
+    load_positions: true
+
+    # 是否读取未成交订单
+    load_open_orders: true
+
+
+  # ==========================================================
+  # 05. Market Data
+  # 市场数据
+  # ==========================================================
+  market_data:
+
+    enabled: true
+
+    # 数据来源
+    provider: "IBKR"
+
+    # 实时行情
+    realtime: true
+
+    # 默认股票数据类型
+    stock_data_type: "TRADES"
+
+    # 默认行情模式
+    market_data_type: 1
+
+    # 1 = Live
+    # 2 = Frozen
+    # 3 = Delayed
+    # 4 = Delayed Frozen
+
+    # 默认 K 线
+    bar:
+
+      size: "1 sec"
+
+      what_to_show: "TRADES"
+
+      use_rth: true
+
+      format_date: 1
+
+
+    # --------------------------------------------------------
+    # Tick Data
+    # --------------------------------------------------------
+    tick:
+
+      enabled: true
+
+      last: true
+
+      bid: true
+
+      ask: true
+
+      volume: true
+
+      bid_ask: true
+
+
+    # --------------------------------------------------------
+    # Market Depth
+    # --------------------------------------------------------
+    market_depth:
+
+      enabled: false
+
+      levels: 5
+
+
+  # ==========================================================
+  # 06. Historical Data
+  # 历史数据
+  # ==========================================================
+  historical_data:
+
+    enabled: true
+
+    # 默认数据类型
+    what_to_show: "TRADES"
+
+    # 使用正常交易时段
+    use_rth: true
+
+    # 数据格式
+    format_date: 1
+
+    # 默认持续时间
+    duration: "1 D"
+
+    # 默认 Bar
+    bar_size: "1 sec"
+
+    # 数据存储
+    cache: true
+
+    cache_path: "data/cache/ibkr"
+
+
+  # ==========================================================
+  # 07. Stock Trading
+  # 股票交易
+  # ==========================================================
+  stock:
+
+    enabled: true
+
+    # 股票订单类型
+    allowed_order_types:
+
+      - "MKT"
+      - "LMT"
+      - "STP"
+      - "STP_LMT"
+
+    # 默认订单类型
+    default_order_type: "LMT"
+
+    # 默认 Time In Force
+    default_tif: "DAY"
+
+    # 是否允许碎股
+    fractional_shares: true
+
+    # 是否允许卖空
+    short_selling: false
+
+
+  # ==========================================================
+  # 08. Options Trading
+  # 期权交易
+  # ==========================================================
+  options:
+
+    enabled: true
+
+    # 默认订单类型
+    default_order_type: "LMT"
+
+    # 默认 TIF
+    default_tif: "DAY"
+
+    # 是否允许期权交易
+    allow_trading: true
+
+    # 是否允许裸卖期权
+    naked_options: false
+
+    # 是否允许期权行权
+    exercise: false
+
+    # 是否允许自动处理 Assignment
+    auto_assignment: false
+
+    # 期权链
+    option_chain:
+
+      enabled: true
+
+      load_expirations: true
+
+      load_strikes: true
+
+      load_greeks: true
+
+      load_implied_volatility: true
+
+
+  # ==========================================================
+  # 09. Order Management
+  # 订单管理
+  # ==========================================================
+  order:
+
+    enabled: true
+
+    # 订单确认
+    confirm_order: true
+
+    # 提交订单前风险检查
+    pre_trade_risk_check: true
+
+    # 订单状态监控
+    monitor_status: true
+
+    # 最大订单等待时间
+    timeout_seconds: 30
+
+    # 最大重试
+    max_retries: 3
+
+    # 重试间隔
+    retry_interval_seconds: 2
+
+
+    # --------------------------------------------------------
+    # Order Types
+    # --------------------------------------------------------
+    types:
+
+      market:
+        enabled: true
+
+      limit:
+        enabled: true
+
+      stop:
+        enabled: true
+
+      stop_limit:
+        enabled: true
+
+
+    # --------------------------------------------------------
+    # Order Protection
+    # --------------------------------------------------------
+    protection:
+
+      # 最大价格偏离
+      max_price_deviation: 0.02
+
+      # 防止异常数量
+      max_quantity: 500
+
+      # 防止重复订单
+      duplicate_order_check: true
+
+      # 防止重复订单时间窗口
+      duplicate_window_seconds: 10
+
+
+  # ==========================================================
+  # 10. Execution
+  # 执行参数
+  # ==========================================================
+  execution:
+
+    enabled: true
+
+    # 默认执行方式
+    method: "SMART"
+
+    # 股票执行
+    stock:
+
+      exchange: "SMART"
+
+      routing: "SMART"
+
+      outside_rth: false
+
+
+    # 期权执行
+    options:
+
+      exchange: "SMART"
+
+      outside_rth: false
+
+
+    # 市场冲击控制
+    market_impact_control: true
+
+
+  # ==========================================================
+  # 11. Commission
+  # 交易成本
+  # ==========================================================
+  commission:
+
+    enabled: true
+
+    # 是否从 IBKR 获取实际成交成本
+    use_broker_report: true
+
+    # 是否估算交易成本
+    estimate_before_trade: true
+
+
+  # ==========================================================
+  # 12. Connection Health
+  # 连接健康检查
+  # ==========================================================
+  health:
+
+    enabled: true
+
+    # 心跳检查
+    heartbeat: true
+
+    heartbeat_interval_seconds: 10
+
+    # 最大无响应时间
+    max_silence_seconds: 30
+
+    # 市场数据更新时间检查
+    market_data_check: true
+
+    # 订单状态检查
+    order_status_check: true
+
+    # 账户状态检查
+    account_check: true
+
+
+  # ==========================================================
+  # 13. Reconnection
+  # 自动重连
+  # ==========================================================
+  reconnection:
+
+    enabled: true
+
+    max_attempts: 20
+
+    initial_delay: 5
+
+    max_delay: 120
+
+    backoff: 2.0
+
+    # 重连后重新同步
+    resync:
+
+      account: true
+
+      positions: true
+
+      open_orders: true
+
+      market_data: true
+
+
+  # ==========================================================
+  # 14. Synchronization
+  # 本地系统与 IBKR 状态同步
+  # ==========================================================
+  synchronization:
+
+    enabled: true
+
+    # 启动时同步
+    sync_on_start: true
+
+    # 定期同步
+    periodic_sync: true
+
+    sync_interval_seconds: 30
+
+    # 账户
+    account: true
+
+    # 持仓
+    positions: true
+
+    # 订单
+    orders: true
+
+    # 成交
+    fills: true
+
+
+  # ==========================================================
+  # 15. Error Handling
+  # 错误处理
+  # ==========================================================
+  error_handling:
+
+    enabled: true
+
+    # 自动重试
+    retry_enabled: true
+
+    # 最大重试次数
+    max_retries: 3
+
+    # 是否记录 IBKR 错误码
+    log_error_codes: true
+
+    # 严重错误停止交易
+    stop_on_critical_error: true
+
+    # 连接错误
+    connection_error_action: "RECONNECT"
+
+    # 市场数据错误
+    market_data_error_action: "RETRY"
+
+    # 订单错误
+    order_error_action: "BLOCK_ORDER"
+
+    # 账户错误
+    account_error_action: "STOP_TRADING"
+
+
+  # ==========================================================
+  # 16. API Limits
+  # API 请求控制
+  # ==========================================================
+  api_limits:
+
+    enabled: true
+
+    # 请求节流
+    rate_limit: true
+
+    # 最大请求速率
+    max_requests_per_second: 5
+
+    # 请求超时
+    request_timeout_seconds: 10
+
+    # 最大并发请求
+    max_concurrent_requests: 10
+
+
+  # ==========================================================
+  # 17. Contract
+  # 合约管理
+  # ==========================================================
+  contract:
+
+    # 自动验证合约
+    validate: true
+
+    # 自动获取合约详情
+    qualify: true
+
+    # 股票
+    stock:
+
+      sec_type: "STK"
+
+      exchange: "SMART"
+
+      currency: "USD"
+
+
+    # 期权
+    option:
+
+      sec_type: "OPT"
+
+      exchange: "SMART"
+
+      currency: "USD"
+
+
+  # ==========================================================
+  # 18. Trading Session
+  # 交易时段
+  # ==========================================================
+  session:
+
+    timezone: "America/New_York"
+
+    # 正常交易时间
+    regular:
+
+      start: "09:30"
+
+      end: "16:00"
+
+    # 是否允许盘前交易
+    pre_market: false
+
+    # 是否允许盘后交易
+    after_market: false
+
+
+  # ==========================================================
+  # 19. Paper Trading Safety
+  # 模拟盘安全控制
+  # ==========================================================
+  paper:
+
+    enabled: true
+
+    # 模拟盘最大资金使用比例
+    max_capital_ratio: 0.50
+
+    # 模拟盘最大持仓数量
+    max_positions: 10
+
+    # 模拟盘允许测试真实订单流程
+    test_order_flow: true
+
+
+  # ==========================================================
+  # 20. Live Trading Safety
+  # 实盘安全控制
+  # ==========================================================
+  live:
+
+    enabled: false
+
+    # 必须显式开启
+    require_explicit_enable: true
+
+    # 必须确认
+    require_confirmation: true
+
+    # 禁止配置文件直接开启
+    config_override_allowed: false
+
+    # 实盘最大资金使用比例
+    max_capital_ratio: 0.80
+
+    # 实盘最大持仓数量
+    max_positions: 20
+
+    # 实盘 Kill Switch
+    kill_switch_enabled: true
+
+
+  # ==========================================================
+  # 21. Logging
+  # Broker 日志
+  # ==========================================================
+  logging:
+
+    enabled: true
+
+    connection: true
+
+    market_data: true
+
+    orders: true
+
+    fills: true
+
+    account: true
+
+    errors: true
+
+    api_requests: false
+
+
+  # ==========================================================
+  # 22. Audit
+  # 交易审计
+  # ==========================================================
+  audit:
+
+    enabled: true
+
+    # 记录订单
+    orders: true
+
+    # 记录成交
+    fills: true
+
+    # 记录订单修改
+    modifications: true
+
+    # 记录取消
+    cancellations: true
+
+    # 记录拒绝
+    rejections: true
+
+    # 记录账户变化
+    account_changes: true

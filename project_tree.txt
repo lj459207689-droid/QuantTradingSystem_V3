@@ -1,0 +1,294 @@
+卷 软件 的文件夹 PATH 列表
+卷序列号为 0005-CDDF
+D:.
+|   .gitignore
+|   20_main.py
+|   21_requirements.txt
+|   22_pyproject.toml
+|   23_README.md
+|   project_tree.txt
+|   
++---01_config
+|       broker.yaml
+|       config.yaml
+|       logging.yaml
+|       risk.yaml
+|       strategy.yaml
+|       symbols.yaml
+|       
++---16_tests
+|   +---backtest
+|   +---integration
+|   +---paper
+|   +---system
+|   \---unit
++---17_scripts
+|       01_download_data.py
+|       02_update_factors.py
+|       03_run_backtest.py
+|       04_run_paper.py
+|       05_run_live.py
+|       06_health_check.py
+|       07_daily_report.py
+|       
++---18_logs
+|   +---data
+|   +---error
+|   +---execution
+|   +---risk
+|   +---strategy
+|   \---system
++---19_reports
+|   +---backtest
+|   +---performance
+|   +---research
+|   \---risk
+\---src
+    \---quant_system
+        |   __init__.py
+        |   
+        +---ai_research
+        |       code_generator.py
+        |       experiment.py
+        |       factor_generator.py
+        |       model_generator.py
+        |       report_generator.py
+        |       strategy_generator.py
+        |       __init__.py
+        |       
+        +---backtest
+        |       broker.py
+        |       commission.py
+        |       engine.py
+        |       order_simulator.py
+        |       performance.py
+        |       slippage.py
+        |       statistics.py
+        |       __init__.py
+        |       
+        +---common
+        |       calendar.py
+        |       exceptions.py
+        |       logger.py
+        |       serialization.py
+        |       time.py
+        |       utils.py
+        |       __init__.py
+        |       
+        +---config
+        |   |   config_manager.py
+        |   |   __init__.py
+        |   |   
+        |   \---__pycache__
+        |           config_manager.cpython-313.pyc
+        |           __init__.cpython-313.pyc
+        |           
+        +---core
+        |   |   __init__.py
+        |   |   
+        |   +---entities
+        |   |       account.py
+        |   |       bar.py
+        |   |       fill.py
+        |   |       order.py
+        |   |       portfolio.py
+        |   |       position.py
+        |   |       signal.py
+        |   |       tick.py
+        |   |       trade.py
+        |   |       __init__.py
+        |   |       
+        |   +---event
+        |   |       engine.py
+        |   |       event.py
+        |   |       __init__.py
+        |   |       
+        |   +---interfaces
+        |   |       data_provider.py
+        |   |       execution.py
+        |   |       factor.py
+        |   |       gateway.py
+        |   |       model.py
+        |   |       portfolio.py
+        |   |       risk.py
+        |   |       strategy.py
+        |   |       __init__.py
+        |   |       
+        |   \---types
+        |           enums.py
+        |           types.py
+        |           __init__.py
+        |           
+        +---data
+        |   |   manager.py
+        |   |   __init__.py
+        |   |   
+        |   +---fundamental
+        |   |       earnings.py
+        |   |       sec.py
+        |   |       __init__.py
+        |   |       
+        |   +---historical
+        |   |       base.py
+        |   |       ibkr.py
+        |   |       yahoo.py
+        |   |       __init__.py
+        |   |       
+        |   +---options
+        |   |       chain.py
+        |   |       greeks.py
+        |   |       iv_surface.py
+        |   |       __init__.py
+        |   |       
+        |   +---realtime
+        |   |       base.py
+        |   |       ibkr.py
+        |   |       __init__.py
+        |   |       
+        |   \---storage
+        |           base.py
+        |           database.py
+        |           parquet.py
+        |           __init__.py
+        |           
+        +---database
+        |   |   connection.py
+        |   |   models.py
+        |   |   repository.py
+        |   |   __init__.py
+        |   |   
+        |   \---migrations
+        |           __init__.py
+        |           
+        +---execution
+        |   |   manager.py
+        |   |   __init__.py
+        |   |   
+        |   +---algorithms
+        |   |       twap.py
+        |   |       vwap.py
+        |   |       __init__.py
+        |   |       
+        |   +---brokers
+        |   |   |   __init__.py
+        |   |   |   
+        |   |   \---ibkr
+        |   |           market_data.py
+        |   |           __init__.py
+        |   |           
+        |   \---oms
+        |           fill_manager.py
+        |           order_manager.py
+        |           order_state.py
+        |           __init__.py
+        |           
+        +---factors
+        |   |   evaluator.py
+        |   |   manager.py
+        |   |   selector.py
+        |   |   __init__.py
+        |   |   
+        |   +---fundamental
+        |   |       __init__.py
+        |   |       
+        |   +---microstructure
+        |   |       __init__.py
+        |   |       
+        |   +---momentum
+        |   |       __init__.py
+        |   |       
+        |   +---options
+        |   |       __init__.py
+        |   |       
+        |   +---trend
+        |   |       __init__.py
+        |   |       
+        |   +---volatility
+        |   |       __init__.py
+        |   |       
+        |   \---volume
+        |           __init__.py
+        |           
+        +---models
+        |   |   manager.py
+        |   |   predictor.py
+        |   |   trainer.py
+        |   |   __init__.py
+        |   |   
+        |   +---deep_learning
+        |   |       __init__.py
+        |   |       
+        |   +---ensemble
+        |   |       __init__.py
+        |   |       
+        |   +---machine_learning
+        |   |       __init__.py
+        |   |       
+        |   \---statistical
+        |           __init__.py
+        |           
+        +---monitor
+        |       account.py
+        |       alert.py
+        |       manager.py
+        |       performance.py
+        |       position.py
+        |       system.py
+        |       __init__.py
+        |       
+        +---portfolio
+        |       allocator.py
+        |       constraints.py
+        |       manager.py
+        |       optimizer.py
+        |       position.py
+        |       rebalance.py
+        |       __init__.py
+        |       
+        +---preprocess
+        |       adjust.py
+        |       cleaner.py
+        |       missing.py
+        |       normalizer.py
+        |       outlier.py
+        |       pipeline.py
+        |       time_alignment.py
+        |       __init__.py
+        |       
+        +---risk
+        |       cvar.py
+        |       drawdown.py
+        |       exposure.py
+        |       manager.py
+        |       position_sizer.py
+        |       risk_monitor.py
+        |       stress_test.py
+        |       var.py
+        |       __init__.py
+        |       
+        +---strategies
+        |   |   manager.py
+        |   |   signal_generator.py
+        |   |   __init__.py
+        |   |   
+        |   +---market_regime
+        |   |       __init__.py
+        |   |       
+        |   +---mean_reversion
+        |   |       __init__.py
+        |   |       
+        |   +---options
+        |   |       __init__.py
+        |   |       
+        |   +---sector_selector
+        |   |       __init__.py
+        |   |       
+        |   +---stock_selector
+        |   |       __init__.py
+        |   |       
+        |   \---trend
+        |           __init__.py
+        |           
+        \---__pycache__
+                __init__.cpython-313.pyc
+                

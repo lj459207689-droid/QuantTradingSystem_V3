@@ -1,0 +1,764 @@
+# ============================================================
+# QuantTradingSystem V3
+# Logging Configuration
+# ============================================================
+
+logging:
+
+  # ==========================================================
+  # 01. Global Logging
+  # 全局日志
+  # ==========================================================
+  enabled: true
+
+  # 默认日志级别
+  # DEBUG / INFO / WARNING / ERROR / CRITICAL
+  level: "INFO"
+
+  # 日志时区
+  timezone: "America/New_York"
+
+  # 是否记录时间
+  include_timestamp: true
+
+  # 是否记录模块名称
+  include_module: true
+
+  # 是否记录函数名称
+  include_function: true
+
+  # 是否记录行号
+  include_line_number: true
+
+  # 是否记录进程 ID
+  include_process_id: true
+
+  # 是否记录线程 ID
+  include_thread_id: true
+
+
+  # ==========================================================
+  # 02. Runtime Environment
+  # 运行环境日志级别
+  # ==========================================================
+  environment:
+
+    development:
+      level: "DEBUG"
+
+    backtest:
+      level: "INFO"
+
+    paper:
+      level: "INFO"
+
+    live:
+      level: "WARNING"
+
+
+  # ==========================================================
+  # 03. Console Handler
+  # 控制台日志
+  # ==========================================================
+  console:
+
+    enabled: true
+
+    level: "INFO"
+
+    # 是否输出到终端
+    stdout: true
+
+    # 是否使用彩色输出
+    color: true
+
+    # 输出格式
+    format: >
+      "%(asctime)s | %(levelname)s | %(name)s |
+      %(module)s:%(lineno)d | %(message)s"
+
+
+  # ==========================================================
+  # 04. File Logging
+  # 文件日志
+  # ==========================================================
+  file:
+
+    enabled: true
+
+    # 日志根目录
+    directory: "logs"
+
+    # 默认日志文件
+    filename: "system.log"
+
+    # 文件编码
+    encoding: "utf-8"
+
+    # 文件日志级别
+    level: "INFO"
+
+    # 单个日志文件最大大小
+    max_size_mb: 50
+
+    # 保留日志文件数量
+    backup_count: 10
+
+    # 是否自动轮转
+    rotation: true
+
+
+  # ==========================================================
+  # 05. Daily Log Rotation
+  # 每日日志
+  # ==========================================================
+  daily_rotation:
+
+    enabled: true
+
+    # 每天生成一个日志文件
+    filename_pattern: "system_%Y-%m-%d.log"
+
+    # 保留天数
+    retention_days: 30
+
+    # 压缩旧日志
+    compression: true
+
+
+  # ==========================================================
+  # 06. Module Loggers
+  # 模块级日志
+  # ==========================================================
+  modules:
+
+    # --------------------------------------------------------
+    # Core
+    # --------------------------------------------------------
+    core:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Configuration
+    # --------------------------------------------------------
+    config:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Market Data
+    # --------------------------------------------------------
+    market_data:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Factor Engine
+    # --------------------------------------------------------
+    factor:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Strategy
+    # --------------------------------------------------------
+    strategy:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Risk Engine
+    # --------------------------------------------------------
+    risk:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Portfolio
+    # --------------------------------------------------------
+    portfolio:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Execution
+    # --------------------------------------------------------
+    execution:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # Broker
+    # --------------------------------------------------------
+    broker:
+      enabled: true
+      level: "INFO"
+
+    # --------------------------------------------------------
+    # IBKR
+    # --------------------------------------------------------
+    ibkr:
+      enabled: true
+      level: "INFO"
+
+
+  # ==========================================================
+  # 07. Trading Logs
+  # 交易日志
+  # ==========================================================
+  trading:
+
+    enabled: true
+
+    filename: "trading.log"
+
+    level: "INFO"
+
+    # 记录策略信号
+    signals: true
+
+    # 记录订单
+    orders: true
+
+    # 记录订单修改
+    order_modifications: true
+
+    # 记录订单取消
+    cancellations: true
+
+    # 记录成交
+    fills: true
+
+    # 记录持仓变化
+    positions: true
+
+    # 记录账户变化
+    account_changes: true
+
+
+  # ==========================================================
+  # 08. Risk Logs
+  # 风控日志
+  # ==========================================================
+  risk:
+
+    enabled: true
+
+    filename: "risk.log"
+
+    level: "INFO"
+
+    # 风控检查
+    checks: true
+
+    # 风控通过
+    approved: true
+
+    # 风控拒绝
+    rejected: true
+
+    # 风控指标
+    metrics: true
+
+    # VaR
+    var: true
+
+    # Expected Shortfall
+    expected_shortfall: true
+
+    # Drawdown
+    drawdown: true
+
+    # Exposure
+    exposure: true
+
+    # Greeks
+    greeks: true
+
+    # Kill Switch
+    kill_switch: true
+
+
+  # ==========================================================
+  # 09. Market Data Logs
+  # 市场数据日志
+  # ==========================================================
+  market_data:
+
+    enabled: true
+
+    filename: "market_data.log"
+
+    level: "INFO"
+
+    # Tick
+    tick: false
+
+    # Bar
+    bar: true
+
+    # Quote
+    quote: true
+
+    # Order Book
+    order_book: false
+
+    # 数据连接
+    connection: true
+
+    # 数据断开
+    disconnection: true
+
+    # 数据异常
+    data_error: true
+
+    # 数据延迟
+    latency: true
+
+
+  # ==========================================================
+  # 10. Execution Logs
+  # 执行日志
+  # ==========================================================
+  execution:
+
+    enabled: true
+
+    filename: "execution.log"
+
+    level: "INFO"
+
+    # 下单
+    submit: true
+
+    # 成交
+    fill: true
+
+    # 取消
+    cancel: true
+
+    # 拒绝
+    reject: true
+
+    # 重试
+    retry: true
+
+    # 滑点
+    slippage: true
+
+    # 执行延迟
+    latency: true
+
+
+  # ==========================================================
+  # 11. Broker / IBKR Logs
+  # 券商日志
+  # ==========================================================
+  broker:
+
+    enabled: true
+
+    filename: "broker.log"
+
+    level: "INFO"
+
+    # 连接
+    connection: true
+
+    # 断开
+    disconnection: true
+
+    # API 请求
+    api_request: false
+
+    # API 响应
+    api_response: false
+
+    # 订单状态
+    order_status: true
+
+    # 成交
+    fills: true
+
+    # 账户
+    account: true
+
+    # IBKR 错误
+    errors: true
+
+    # IBKR 错误代码
+    error_codes: true
+
+
+  # ==========================================================
+  # 12. Audit Logs
+  # 审计日志
+  # ==========================================================
+  audit:
+
+    enabled: true
+
+    filename: "audit.log"
+
+    level: "INFO"
+
+    # 策略信号
+    strategy_signals: true
+
+    # 风控决定
+    risk_decisions: true
+
+    # 订单
+    orders: true
+
+    # 成交
+    fills: true
+
+    # 订单取消
+    cancellations: true
+
+    # 配置变化
+    config_changes: true
+
+    # 系统启动
+    system_start: true
+
+    # 系统关闭
+    system_shutdown: true
+
+    # 用户操作
+    user_actions: true
+
+
+  # ==========================================================
+  # 13. Error Logs
+  # 异常日志
+  # ==========================================================
+  error:
+
+    enabled: true
+
+    filename: "error.log"
+
+    level: "ERROR"
+
+    # Python Exception
+    exceptions: true
+
+    # Traceback
+    traceback: true
+
+    # API 错误
+    api_errors: true
+
+    # 数据错误
+    data_errors: true
+
+    # 策略错误
+    strategy_errors: true
+
+    # 风控错误
+    risk_errors: true
+
+    # Broker 错误
+    broker_errors: true
+
+    # 执行错误
+    execution_errors: true
+
+
+  # ==========================================================
+  # 14. Performance Logs
+  # 性能日志
+  # ==========================================================
+  performance:
+
+    enabled: true
+
+    filename: "performance.log"
+
+    level: "INFO"
+
+    # 数据处理耗时
+    data_latency: true
+
+    # 因子计算耗时
+    factor_latency: true
+
+    # 策略计算耗时
+    strategy_latency: true
+
+    # 风控计算耗时
+    risk_latency: true
+
+    # 订单执行耗时
+    execution_latency: true
+
+    # Broker API 延迟
+    broker_latency: true
+
+
+  # ==========================================================
+  # 15. Metrics
+  # 系统指标
+  # ==========================================================
+  metrics:
+
+    enabled: true
+
+    # CPU
+    cpu: true
+
+    # Memory
+    memory: true
+
+    # Network
+    network: true
+
+    # Event Loop
+    event_loop: true
+
+    # Queue
+    queue: true
+
+    # Order Throughput
+    order_throughput: true
+
+
+  # ==========================================================
+  # 16. Debug
+  # 调试日志
+  # ==========================================================
+  debug:
+
+    enabled: false
+
+    level: "DEBUG"
+
+    # 开发阶段可打开
+    stack_trace: true
+
+    # API 调试
+    broker_api: false
+
+    # 数据调试
+    market_data: false
+
+    # 策略调试
+    strategy: false
+
+    # 风控调试
+    risk: false
+
+
+  # ==========================================================
+  # 17. Security
+  # 安全日志
+  # ==========================================================
+  security:
+
+    enabled: true
+
+    filename: "security.log"
+
+    level: "WARNING"
+
+    # 禁止记录 API Key
+    mask_api_key: true
+
+    # 禁止记录密码
+    mask_password: true
+
+    # 禁止记录 Token
+    mask_token: true
+
+    # 禁止记录账户敏感信息
+    mask_account: true
+
+
+  # ==========================================================
+  # 18. Sensitive Data
+  # 敏感信息保护
+  # ==========================================================
+  sensitive:
+
+    enabled: true
+
+    # 账号
+    account_id: true
+
+    # API Key
+    api_key: true
+
+    # Secret
+    secret: true
+
+    # Password
+    password: true
+
+    # Token
+    token: true
+
+    replacement: "***"
+
+
+  # ==========================================================
+  # 19. Structured Logging
+  # 结构化日志
+  # ==========================================================
+  structured:
+
+    enabled: true
+
+    format: "json"
+
+    # JSON 日志文件
+    filename: "events.jsonl"
+
+    encoding: "utf-8"
+
+
+  # ==========================================================
+  # 20. Alert Logging
+  # 报警日志
+  # ==========================================================
+  alert:
+
+    enabled: true
+
+    filename: "alert.log"
+
+    level: "WARNING"
+
+    # 普通警告
+    warning: true
+
+    # 严重警告
+    critical: true
+
+    # 紧急事件
+    emergency: true
+
+    # Kill Switch
+    kill_switch: true
+
+
+  # ==========================================================
+  # 21. Retention
+  # 日志保存
+  # ==========================================================
+  retention:
+
+    # 普通日志
+    system_days: 30
+
+    # 交易日志
+    trading_days: 365
+
+    # 风控日志
+    risk_days: 365
+
+    # 审计日志
+    audit_days: 2555
+
+    # 错误日志
+    error_days: 365
+
+    # 性能日志
+    performance_days: 90
+
+    # 报警日志
+    alert_days: 365
+
+
+  # ==========================================================
+  # 22. Encoding
+  # 编码
+  # ==========================================================
+  encoding:
+
+    charset: "utf-8"
+
+    errors: "replace"
+
+
+  # ==========================================================
+  # 23. Logger Hierarchy
+  # 日志层级
+  # ==========================================================
+  hierarchy:
+
+    root:
+      level: "INFO"
+
+    quant_system:
+      level: "INFO"
+
+    quant_system.core:
+      level: "INFO"
+
+    quant_system.market_data:
+      level: "INFO"
+
+    quant_system.factor:
+      level: "INFO"
+
+    quant_system.strategy:
+      level: "INFO"
+
+    quant_system.risk:
+      level: "INFO"
+
+    quant_system.portfolio:
+      level: "INFO"
+
+    quant_system.execution:
+      level: "INFO"
+
+    quant_system.broker:
+      level: "INFO"
+
+
+  # ==========================================================
+  # 24. Startup / Shutdown
+  # 系统启动与关闭
+  # ==========================================================
+  lifecycle:
+
+    startup: true
+
+    shutdown: true
+
+    configuration_loaded: true
+
+    configuration_validated: true
+
+    modules_initialized: true
+
+    modules_shutdown: true
+
+
+  # ==========================================================
+  # 25. Logging Engine
+  # 日志引擎
+  # ==========================================================
+  engine:
+
+    name: "LoggingManager"
+
+    version: "1.0.0"
+
+    # 异步日志
+    async: true
+
+    # 日志队列
+    queue_enabled: true
+
+    queue_size: 10000
+
+    # 日志失败不能导致交易系统崩溃
+    fail_safe: true
+
+    # 日志异常处理
+    suppress_logging_errors: true

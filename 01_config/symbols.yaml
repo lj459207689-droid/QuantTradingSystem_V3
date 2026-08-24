@@ -1,0 +1,112 @@
+# ============================================================
+# QuantTradingSystem V3
+# Trading Symbols Configuration
+# ============================================================
+
+symbols:
+
+  # ==========================================================
+  # US Stocks
+  # ==========================================================
+  stocks:
+
+    - symbol: "NVDA"
+      name: "NVIDIA"
+      exchange: "SMART"
+      currency: "USD"
+      enabled: true
+      asset_type: "STOCK"
+
+    - symbol: "TSLA"
+      name: "Tesla"
+      exchange: "SMART"
+      currency: "USD"
+      enabled: true
+      asset_type: "STOCK"
+
+    - symbol: "GOOGL"
+      name: "Alphabet Class A"
+      exchange: "SMART"
+      currency: "USD"
+      enabled: true
+      asset_type: "STOCK"
+
+
+  # ==========================================================
+  # US ETFs
+  # ==========================================================
+  etfs:
+
+    - symbol: "SPY"
+      name: "SPDR S&P 500 ETF"
+      exchange: "SMART"
+      currency: "USD"
+      enabled: true
+      asset_type: "ETF"
+
+    - symbol: "QQQ"
+      name: "Invesco QQQ"
+      exchange: "SMART"
+      currency: "USD"
+      enabled: true
+      asset_type: "ETF"
+
+
+  # ==========================================================
+  # Market Index
+  # ==========================================================
+  indices:
+
+    - symbol: "SPX"
+      name: "S&P 500 Index"
+      exchange: "CBOE"
+      currency: "USD"
+      enabled: true
+      asset_type: "INDEX"
+
+    - symbol: "NDX"
+      name: "Nasdaq 100 Index"
+      exchange: "NASDAQ"
+      currency: "USD"
+      enabled: true
+      asset_type: "INDEX"
+
+
+  # ==========================================================
+  # Options
+  # ==========================================================
+  options:
+
+    # 期权基础标的
+    underlyings:
+
+      - symbol: "NVDA"
+        enabled: true
+
+      - symbol: "TSLA"
+        enabled: true
+
+      - symbol: "GOOGL"
+        enabled: true
+
+
+# ============================================================
+# Global Symbol Settings
+# ============================================================
+
+settings:
+
+  # 默认交易所
+  default_exchange: "SMART"
+
+  # 默认货币
+  default_currency: "USD"
+
+  # 默认证券类型
+  default_stock_type: "STK"
+
+  # 是否只允许交易 enabled=true 的标的
+  enabled_only: true
+
+  # 是否自动验证交易标的
+  validate_symbols: true
