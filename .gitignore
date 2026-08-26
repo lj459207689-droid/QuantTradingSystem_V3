@@ -83,3 +83,8 @@ htmlcov/
 Thumbs.db
 Desktop.ini
 .DS_Store
+# ==============================
+# One-off generated files
+# ==============================
+project_tree.txt
+目录树.txt
