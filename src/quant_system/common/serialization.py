@@ -36,7 +36,6 @@ from typing import Any
 
 from .exceptions import SerializationError
 
-
 Primitive = str | int | float | bool | None
 
 

@@ -1,8 +1,9 @@
 # src/quant_system/core/interfaces/strategy.py
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List
-from quant_system.core.entities import Bar, Tick, Order, Trade, Signal, Position, Account
+from typing import Any, Dict, List
+
+from quant_system.core.entities import Bar, Order, Tick, Trade
 
 
 class BaseStrategy(ABC):
@@ -14,8 +15,8 @@ class BaseStrategy(ABC):
     def __init__(self, strategy_id: str, symbols: List[str], config: Dict[str, Any]):
         self.strategy_id: str = strategy_id
         self.symbols: List[str] = symbols
-        self.config: Dict[str, Any] = config 
-        self.is_active: bool = False 
+        self.config: Dict[str, Any] = config
+        self.is_active: bool = False
 
     # --- 策略生命周期管理 ---
     @abstractmethod

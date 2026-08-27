@@ -14,7 +14,6 @@ from __future__ import annotations
 from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-
 UTC = timezone.utc
 
 NEW_YORK = ZoneInfo("America/New_York")

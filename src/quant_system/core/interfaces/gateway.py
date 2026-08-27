@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Optional, Callable, Any
-from quant_system.core.entities import Bar, Tick, Order, Trade, Position, Account
+from typing import Any, Dict, Optional
+
+from quant_system.core.entities import Account, Order, Position
 
 
 class BaseGateway(ABC):

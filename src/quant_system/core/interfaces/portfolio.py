@@ -12,7 +12,7 @@ Portfolio Interface
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Optional, Any
+from typing import Any, Dict, Optional
 
 
 class IPortfolio(ABC):

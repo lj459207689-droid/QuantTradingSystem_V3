@@ -1,7 +1,8 @@
 import logging
-from queue import Queue, Empty
+from queue import Empty, Queue
 from threading import Thread
 from typing import Callable, Dict, List
+
 from .event import Event, EventType
 
 HandlerType = Callable[[Event], None]

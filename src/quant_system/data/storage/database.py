@@ -4,8 +4,9 @@ Database-based market data storage using Python's built-in sqlite3.
 
 from __future__ import annotations
 
-from pathlib import Path
 import sqlite3
+from pathlib import Path
+
 import pandas as pd
 
 from .base import DataStorage
@@ -93,7 +94,7 @@ class DatabaseStorage(DataStorage):
         Check whether a SQLite database table exists.
         """
         table_name = self._table_name(key)
-        
+
         if not self.db_path.exists():
             return False
 

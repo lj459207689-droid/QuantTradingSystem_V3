@@ -27,7 +27,6 @@ from .enums import (
     SignalStrength,
     TimeInForce,
 )
-
 from .types import (
     AccountId,
     Amount,
@@ -39,8 +38,8 @@ from .types import (
     Drawdown,
     Exchange,
     Exposure,
-    Factory,
     FactorValues,
+    Factory,
     FeatureVector,
     JsonDict,
     Leverage,
@@ -75,7 +74,6 @@ from .types import (
     VaR,
     Volatility,
 )
-
 
 __all__ = [
 

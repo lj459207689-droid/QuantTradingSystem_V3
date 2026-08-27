@@ -3,7 +3,6 @@ Base factor implementation.
 
 提供所有具体因子共享的基础功能。
 """
-
 from __future__ import annotations
 
 from abc import abstractmethod
@@ -25,8 +24,8 @@ class BaseFactor(Factor):
     - 保持统一的 Factor 接口
     """
 
-    category: str = "unknown"
-    description: str = ""
+    _category: str = "unknown"
+    _description: str = ""
 
     def __init__(self) -> None:
         self._value: Optional[float] = None
@@ -40,12 +39,12 @@ class BaseFactor(Factor):
     @property
     def category(self) -> str:
         """因子类别。"""
-        return self.__class__.category
+        return self.__class__._category
 
     @property
     def description(self) -> str:
         """因子描述。"""
-        return self.__class__.description
+        return self.__class__._description
 
     @property
     def value(self) -> Optional[float]:
@@ -70,7 +69,6 @@ class BaseFactor(Factor):
 
         默认通过 update() 逐行计算。
         """
-
         if not isinstance(data, pd.DataFrame):
             raise TypeError(
                 "data must be a pandas DataFrame"
@@ -123,9 +121,7 @@ class BaseFactor(Factor):
     ) -> Optional[float]:
         """
         factor(data)
-
         等价于：
-
         factor.update(data)
         """
         return self.update(data)

@@ -1,8 +1,9 @@
 # src/quant_system/core/interfaces/risk.py
 
 from abc import ABC, abstractmethod
-from typing import Tuple, Dict
-from quant_system.core.entities import Order, Account, Position
+from typing import Dict, Tuple
+
+from quant_system.core.entities import Account, Order, Position
 
 
 class BaseRiskEngine(ABC):
@@ -13,13 +14,13 @@ class BaseRiskEngine(ABC):
 
     @abstractmethod
     def check_order_risk(
-        self, 
-        order: Order, 
-        account: Account, 
+        self,
+        order: Order,
+        account: Account,
         positions: Dict[str, Position]
     ) -> Tuple[bool, str]:
         """
-        事前风控检查：在订单送达 IBKR 网关之前拦截 
+        事前风控检查：在订单送达 IBKR 网关之前拦截
         :return: (Is_Passed, Reason_If_Rejected) [cite: 11]
         校验项：购买力上限、单笔最大股数、防自相撮合、下订单频率限制等 [cite: 11]
         """
@@ -27,8 +28,8 @@ class BaseRiskEngine(ABC):
 
     @abstractmethod
     def check_portfolio_risk(
-        self, 
-        account: Account, 
+        self,
+        account: Account,
         positions: Dict[str, Position]
     ) -> bool:
         """

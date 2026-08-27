@@ -2,7 +2,8 @@
 
 from abc import ABC, abstractmethod
 from typing import List
-from quant_system.core.entities import Order, Signal, Bar, Tick
+
+from quant_system.core.entities import Bar, Order, Signal
 
 
 class BaseExecutionEngine(ABC):

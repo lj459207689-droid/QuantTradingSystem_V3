@@ -1,9 +1,11 @@
 # src/quant_system/core/interfaces/data_provider.py
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Any, Dict
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+
 import pandas as pd
+
 from quant_system.core.entities import Bar, Tick
 
 

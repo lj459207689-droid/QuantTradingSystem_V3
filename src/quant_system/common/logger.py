@@ -16,7 +16,6 @@ import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-
 DEFAULT_FORMAT = (
     "%(asctime)s | "
     "%(levelname)s | "
