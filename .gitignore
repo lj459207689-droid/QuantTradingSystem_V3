@@ -88,3 +88,6 @@ Desktop.ini
 # ==============================
 project_tree.txt
 目录树.txt
+
+# 历史行情数据，不入库
+*.parquet
